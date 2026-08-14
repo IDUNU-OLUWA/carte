@@ -1,0 +1,87 @@
+/* Centrer la carte au milieu de l'écran */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: /*#f0f0f0*/ url("images/paysage1.jpg") no-repeat center fixed;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Le conteneur qui donne la perspective 3D */
+.carte-container {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px; /* C'est ça qui rend l'effet 3D crédible */
+}
+
+/* La carte qui va tourner */
+.carte {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s; /* Durée de l'animation */
+  transform-style: preserve-3d; /* Garde l'effet 3D */
+  cursor: pointer;
+}
+
+/* Quand on survole, on tourne la carte */
+.carte-container:hover .carte {
+  transform: rotateY(180deg);
+}
+
+/* Les 2 faces de la carte */
+.carte-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Cache la face arrière quand elle est pas visible */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Face avant */
+.carte-avant {
+  background: linear-gradient(135deg, #667eea 0%, #8364a185 100%);
+  color: white;
+}
+
+/* Face arrière - on la tourne déjà de 180° */
+.carte-arriere {
+  background: white;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+/* Styling interne */
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  object-position:center 30%
+}
+
+h2 {
+  margin: 15px 0 5px;
+}
+
+.metier {
+  opacity: 0.8;
+}
+
+.reseaux a {
+  margin: 0 10px;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: bold;
+}
